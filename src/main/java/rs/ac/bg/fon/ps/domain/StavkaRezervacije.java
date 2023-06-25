@@ -110,22 +110,34 @@ public class StavkaRezervacije implements GenericEntity{
 /**
  * Metoda koja postavlja id stavke na prosledjeni parametar
  * @param stavkaId koja se setuje za stavka id
+ * @throws IllegalArgumentException ako je id manji od 0
  */
     public void setStavkaId(Integer stavkaId) {
+        if(stavkaId<0){
+            throw new IllegalArgumentException("Id stavke ne moze biti manji od 0");
+        }
         this.stavkaId = stavkaId;
     }
 /**
  * Metoda koja postavlja popust na prosledjeni parametar za predstavu koju ostvaruje klijent 
  * @param popust koja se setuje za popust predstave u stavki
+ * @throws IllegalArgumentException ako je popust manji od 0 ili veci od 100
  */
     public void setPopust(int popust) {
+         if(popust<0 || popust>100){
+            throw new IllegalArgumentException("Popust stavke ne moze biti manji od 0 ili veci od 100");
+        }
         this.popust = popust;
     }
 /**
  * Metoda koja postavlja broj sedista na prosledjeni parametar za predstavu koju gleda klijent 
  * @param brojSedista koja se setuje za broj rezervisanih sedista predstave u stavki
+ *  @throws IllegalArgumentException ako je brojSedista manji od 0 
  */
     public void setBrojSedista(int brojSedista) {
+         if(brojSedista<0){
+            throw new IllegalArgumentException("broj sedista ne moze biti manji od 0");
+        }
         this.brojSedista = brojSedista;
     }
 /**
@@ -138,15 +150,23 @@ public class StavkaRezervacije implements GenericEntity{
 /**
  * Metoda koja postavlja rezervaciju za koju je vezana stavka
  * @param rezervacijaId koja predstavlja rezervaciju za koju je vezana stavka
+ * @throws NullPointerException ako je rezervacija null
  */
     public void setRezervacijaId(Rezervacija rezervacijaId) {
+        if(rezervacijaId==null){
+            throw new NullPointerException("Ne moze rezervacija da ne postoji");
+        }
         this.rezervacijaId = rezervacijaId;
     }
 /**
  * Metoda koja postavlja predstavu za koju je vezana stavka
  * @param predstavaId koji predstavlja predstavu za koju se pravi stavka rezervacije
+ * @throws NullPointerException ako je predstava null
  */
     public void setPredstavaId(Predstava predstavaId) {
+         if(predstavaId==null){
+            throw new NullPointerException("Ne moze predstava da ne postoji");
+        }
         this.predstavaId = predstavaId;
     }
 /**

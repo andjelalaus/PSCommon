@@ -99,36 +99,64 @@ public class Predstava implements GenericEntity{
 /**
  * Metoda koja postavlja id predstave na prosledjeni parametar
  * @param predstavaId koja se setuje za predstava id
+ * @throws IllegalArgumentException id ne moze biti manji od 0
  */
     public void setPredstavaId(Integer predstavaId) {
+        if(predstavaId<0){
+            throw new IllegalArgumentException("Ne moze id biti manji od 0");
+        }
         this.predstavaId = predstavaId;
     }
 /**
  * Metoda koja postavlja naziv predstave na prosledjeni parametar
  * @param naziv koja se setuje za predstavin naziv
+ * @throws IllegalArgumentException naziv ne moze biti prazan
+ * @throws NullPointerException naziv ne moze biti null
  */
     public void setNaziv(String naziv) {
+         if(naziv==null){
+            throw new NullPointerException("Ne moze naziv biti null");
+        }    
+         if(naziv.isEmpty()){
+            throw new IllegalArgumentException("Ne moze naziv biti prazan");
+        }
         this.naziv = naziv;
     }
 /**
  * Metoda koja postavlja naziv mesta predstave na prosledjeni parametar
  * @param mesto koja se setuje za predstavin naziv mesta
+ * @throws IllegalArgumentException naziv mesta ne moze biti prazan
+ * @throws NullPointerException naziv mesta ne moze biti null
  */
     public void setMesto(String mesto) {
+           if(mesto==null){
+            throw new NullPointerException("Ne moze naziv mesta biti null");
+        }    
+         if(mesto.isEmpty()){
+            throw new IllegalArgumentException("Ne moze naziv mesta biti prazan");
+        }
         this.mesto = mesto;
     }
 /**
  * Metoda koja postavlja vreme predstave na prosledjeni parametar
  * @param vreme koja se setuje za datum i vreme predstave
+ * @throws NullPointerException ako je vreme null
  */
     public void setVreme(LocalDateTime vreme) {
+        if(vreme==null){
+            throw new NullPointerException("Vreme mora da postoji");
+        }
         this.vreme = vreme;
     }
 /**
  * Metoda koja postavlja kapacitet predstave na prosledjeni parametar
  * @param kapacitet koja se setuje za predstavin kapacitet mesta
+ * @throws IllegalArgumentException ako je kapacitet manji od 0
  */
     public void setKapacitet(Integer kapacitet) {
+        if(kapacitet<0){
+            throw new IllegalArgumentException("Kapacitet ne sme biti manji od 0");
+        }
         this.kapacitet = kapacitet;
     }
 /**

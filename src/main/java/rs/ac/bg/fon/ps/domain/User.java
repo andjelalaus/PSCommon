@@ -54,16 +54,32 @@ public class User implements Serializable{
 /**
  * Metoda koja postavlja username korisnika  na prosledjeni parametar
  * @param username koja se setuje za korisnikov username
+ * @throws IllegalArgumentException ako je username prazan string
+ * @throws NullPointerException ako je username null
  */
     public void setUsername(String username) {
+        if(username.isEmpty()){
+            throw new IllegalArgumentException("ne moze da bude prazan username");
+        }
+        if(username==null){
+            throw new NullPointerException("ne moze da bude null username");
+        }
         this.username = username;
     }
 
 /**
  * Metoda koja postavlja password korisnika  na prosledjeni parametar
  * @param password koja se setuje za korisnikov password
+ * @throws IllegalArgumentException ako je password prazan string
+ * @throws NullPointerException ako je password null
  */
     public void setPassword(String password) {
+           if(password.isEmpty()){
+            throw new IllegalArgumentException("ne moze da bude prazan password");
+        }
+        if(password==null){
+            throw new NullPointerException("ne moze da bude null password");
+        }
         this.password = password;
     }
     

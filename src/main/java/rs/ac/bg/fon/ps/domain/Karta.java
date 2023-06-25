@@ -82,29 +82,46 @@ public class Karta implements GenericEntity {
 /**
  * Metoda koja postavlja id karte na prosledjeni parametar
  * @param kartaId koja se setuje za karta id
+ * @throws IllegalArgumentException ako je id manji od 0
  */
     public void setKartaId(Integer kartaId) {
+        if(kartaId<0){
+            throw new IllegalArgumentException("Ne moze id karte biti manji od 0");
+        }
         this.kartaId = kartaId;
     }
 /**
  * Metoda koja postavlja cenu karte
  * @param cena koju atribut cena trebba da dobije
+ * @throws IllegalArgumentException ako je cena manja od 0
  */
     public void setCena(int cena) {
+          if(cena<0){
+            throw new IllegalArgumentException("Ne moze cena karte biti manja od 0");
+        }
         this.cena = cena;
     }
 /**
  * Metoda za postavljanje rezervacije na prosledjenu vrednost
  * @param rezervacijaId koji se stavlja kao vrednost atributa rezervacije prosledjuje se objekat rezervacije 
+ * @throws NullPointerException ako je rezervacija null
+ * 
  */
     public void setRezervacijaId(Rezervacija rezervacijaId) {
+        if(rezervacijaId==null){
+            throw new NullPointerException("Rezervacija mora da postoji za kartu");
+        }
         this.rezervacijaId = rezervacijaId;
     }
 /**
  * Metoda za postavljanje stavke na prosledjenu vrednost
  * @param stavkaId koji se stavlja kao vrednost atributa stavke prosledjuje se objekat stavke 
+ * @throws NullPointerException ako je stavka null ona mora da postoji
  */
     public void setStavkaId(StavkaRezervacije stavkaId) {
+           if(stavkaId==null){
+            throw new NullPointerException("Stavka mora da postoji za kartu");
+        }
         this.stavkaId = stavkaId;
     }
 /**

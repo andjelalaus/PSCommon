@@ -58,22 +58,34 @@ public class Rezervacija implements GenericEntity{
 /**
  * Metoda koja postavlja id rezervacije na prosledjeni parametar
  * @param rezervacijaId koja se setuje za rezervaciju id
+ * @throws IllegalArgumentException ako je id rezervacije manji od 0
  */
     public void setRezervacijaId(Integer rezervacijaId) {
+        if(rezervacijaId<0){
+            throw new IllegalArgumentException("Id rezervacije ne sme biti manji od 0");
+        }
         this.rezervacijaId = rezervacijaId;
     }
 /**
  * Metoda koja postavlja broj predstavi za koju se pravi rezervacije na prosledjeni parametar
  * @param brojPredstave koja se setuje za broj predstavi koji ce biti u rezervaciji
+ * @throws IllegalArgumentException ako je brojPredstave rezervacije manji od 0
  */
     public void setBrojPredstave(Integer brojPredstave) {
+         if(brojPredstave<0){
+            throw new IllegalArgumentException("brojPredstave u rezervaciji ne sme biti manji od 0");
+        }
         this.brojPredstave = brojPredstave;
     }
 /**
  * Metoda koja postavlja klijenta za koju se pravi rezervacije na prosledjeni parametar
  * @param klijentId koja se setuje za klijenta koji ce biti u rezervaciji
+ * @throws NullPointerException ako je klijent null
  */
     public void setKlijentId(Klijent klijentId) {
+        if(klijentId==null){
+            throw new NullPointerException("Ne moze klijent biti null, mora da postoji");
+        }
         this.klijentId = klijentId;
     }
 /**

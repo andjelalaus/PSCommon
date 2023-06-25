@@ -95,36 +95,72 @@ public class Klijent implements GenericEntity{
 /**
  * Metoda koja postavlja id klijenta na prosledjeni parametar
  * @param klijentId u integer formatu koja se setuje za klijent id
+ * @throws IllegalArgumentException ako je id klijenta manji od 0
  */
     public void setKlijentId(Integer klijentId) {
+        if(klijentId<0){
+            throw new IllegalArgumentException("ne moze id klijenta biti manji od 0");
+        }
         this.klijentId = klijentId;
     }
 /**
  * Metoda koja postavlja ime klijenta na prosledjeni parametar
  * @param ime u string formatu koja se setuje za klijentovo ime
+ * @throws NullPointerException ako je ime null
+ * @throws IllegalArgumentException ako je ime prazan string
  */
     public void setIme(String ime) {
+        if(ime==null){
+            throw new NullPointerException("Ne moze ime da bude null");
+        }
+        if(ime.isEmpty()){
+            throw new IllegalArgumentException("Ne moze ime da bude prazan string");
+        }
         this.ime = ime;
     }
 /**
  * Metoda koja postavlja prezime klijenta na prosledjeni parametar
  * @param prezime u string formatu koja se setuje za klijentovo prezime
+ * @throws NullPointerException ako je prezime null
+ * @throws IllegalArgumentException ako je prezime prazan string
  */
     public void setPrezime(String prezime) {
+            if(prezime==null){
+            throw new NullPointerException("Ne moze prezime da bude null");
+        }
+        if(prezime.isEmpty()){
+            throw new IllegalArgumentException("Ne moze prezime da bude prazan string");
+        }
         this.prezime = prezime;
     }
 /**
  * Metoda koja postavlja email klijenta na prosledjeni parametar
  * @param email u string formatu koja se setuje za klijentov email
+ * @throws NullPointerException ako je email null
+ * @throws IllegalArgumentException ako je email prazan string
  */
     public void setEmail(String email) {
+        if(email==null){
+            throw new NullPointerException("Ne moze email da bude null");
+        }
+       if(email.isEmpty()){
+            throw new IllegalArgumentException("Ne moze email da bude prazan string");
+        }
         this.email = email;
     }
 /**
  * Metoda koja postavlja status klijenta na prosledjeni parametar
  * @param status u string formatu koja se setuje za klijentov status
+ *  @throws NullPointerException ako je status null
+ * @throws IllegalArgumentException ako je status prazan string
  */
     public void setStatus(String status) {
+         if(status==null){
+            throw new NullPointerException("Ne moze status da bude null");
+        }
+       if(status.isEmpty()){
+            throw new IllegalArgumentException("Ne moze status da bude prazan string");
+        }
         this.status = status;
     }
 /**

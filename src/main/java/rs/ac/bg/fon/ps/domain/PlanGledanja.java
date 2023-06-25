@@ -80,15 +80,23 @@ public class PlanGledanja implements GenericEntity{
 /**
  * Metoda koja postavlja predstavu na prosledjeni parametar
  * @param predstavaId koja se setuje za predstavu za koju se pise plan gledanja
+ * @throws NullPointerException ako je predstavaId null
  */
     public void setPredstavaId(Predstava predstavaId) {
+        if(predstavaId==null){
+            throw new NullPointerException("Mora da postoji predstava ne moze biti null");
+        }
         this.predstavaId = predstavaId;
     }
 /**
  * Metoda koja postavlja klijenta na prosledjeni parametar
  * @param klijentId koja se setuje za klijenta za koju se pise plan gledanja
+ * @throws NullPointerException ako je klijentId null
  */
     public void setKlijentId(Klijent klijentId) {
+        if(klijentId==null){
+            throw new NullPointerException("Mora da postoji klijent ne moze biti null");
+        }
         this.klijentId = klijentId;
     }
 /**
@@ -101,8 +109,12 @@ public class PlanGledanja implements GenericEntity{
 /**
  * Metoda koja postavlja ocenu na prosledjeni parametar
  * @param ocena koja se setuje za ocenu predstave za koju se pise plan gledanja
+ * @throws IllegalArgumentException ako je ocena manja od 0 ili veca od 10
  */
     public void setOcena(Integer ocena) {
+        if(ocena<0 || ocena>10){
+            throw new IllegalArgumentException("Ocena ima samo raspon od 0 do 10");
+        }
         this.ocena = ocena;
     }
 /**
