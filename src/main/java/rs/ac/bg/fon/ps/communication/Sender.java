@@ -11,16 +11,29 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 /**
- *
- * @author Cartman
+ * Klasa Sender koja sluzi za slanje objekata izmedju korisnika i servera
+ * @author Andjy
  */
 public class Sender {
+    /**
+     * objekat klase Socket
+     */
     private Socket socket;
 
+    /**
+     * Parametrizovan konstruktor date klase, setuje vrednost socket-a
+     * @param socket koji sluzi za komunikaciju korisnika i servera dobija vrednost
+     */
     public Sender(Socket socket) {
         this.socket = socket;
     }
-    
+    /**
+     * Metoda send koja salje objekat korisniku ili serveru
+     * preko ObjectOutputStream i socket-a
+     * 
+     * @param object koji se salje
+     * @throws Exception koji moze da se desi pri salnju datog objekta
+     */
     public void send(Object object) throws Exception{
         try {
             ObjectOutputStream out=new ObjectOutputStream(socket.getOutputStream());

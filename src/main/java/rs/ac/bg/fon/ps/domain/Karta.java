@@ -9,57 +9,109 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 /**
- *
+ * Klasa Karta koja implementira interfejs Genericki entitet i njegove metode
+ * Predstavlja ulaznicu za datu predstavu koja je rezervisana putem stavke rezervacije i klijenta koji je naprvio tu rezervaciju
+ * Ima i svoj atribut cenu
  * @author andelalausevic
  */
 public class Karta implements GenericEntity {
+    /**
+     * Predstavlja jedinstveni identifikator karte
+     */
     private Integer kartaId;
+    /**
+     * Predstavlja cenu karte
+     */
     private int cena;
+    /**
+     * Predstavlja rezervaciju koja je vezana za kartu
+     */
     private Rezervacija rezervacijaId;
+    /**
+     * Predstavlja stavke rezervacije vezane za kartu
+     */
     private StavkaRezervacije stavkaId;
 
+    /**
+     * Neparametrizovan konstruktor
+     */
     public Karta() {
     }
 
+    /**
+     * Parametrizovan konstruktor koji setuje vrednosti za id, cenu, rezervaciju i stavku
+     * @param kartaId id karte koji se setuje 
+     * @param cena  cena karte koji se setuje
+     * @param rezervacijaId rezervacija koja je vezana za kartu
+     * @param stavkaId stavka koja je vezana za rezervaciju
+     */
     public Karta(Integer kartaId, int cena, Rezervacija rezervacijaId, StavkaRezervacije stavkaId) {
         this.kartaId = kartaId;
         this.cena = cena;
         this.rezervacijaId = rezervacijaId;
         this.stavkaId = stavkaId;
     }
-
+/**
+ * Metoda koja vraca id karte
+ * @return kartaId u integer formatu
+ */
     public Integer getKartaId() {
         return kartaId;
     }
-
+/**
+ * Metoda koja vraca cenu karte
+ * @return cena u obliku broja int
+ */
     public int getCena() {
         return cena;
     }
-
+/**
+ * Metoda koja vraca objekat rezervacija koji je vezan za kartu
+ * @return rezervacijaId odnosno rezervacija karte
+ */
     public Rezervacija getRezervacijaId() {
         return rezervacijaId;
     }
-
+/**
+ * Metoda koja vraca stavkurezervacije koja je vezana za kartu
+ * @return stavkaId kao objekat stavke
+ */
     public StavkaRezervacije getStavkaId() {
         return stavkaId;
     }
-
+/**
+ * Metoda koja postavlja id karte na prosledjeni parametar
+ * @param kartaId koja se setuje za karta id
+ */
     public void setKartaId(Integer kartaId) {
         this.kartaId = kartaId;
     }
-
+/**
+ * Metoda koja postavlja cenu karte
+ * @param cena koju atribut cena trebba da dobije
+ */
     public void setCena(int cena) {
         this.cena = cena;
     }
-
+/**
+ * Metoda za postavljanje rezervacije na prosledjenu vrednost
+ * @param rezervacijaId koji se stavlja kao vrednost atributa rezervacije prosledjuje se objekat rezervacije 
+ */
     public void setRezervacijaId(Rezervacija rezervacijaId) {
         this.rezervacijaId = rezervacijaId;
     }
-
+/**
+ * Metoda za postavljanje stavke na prosledjenu vrednost
+ * @param stavkaId koji se stavlja kao vrednost atributa stavke prosledjuje se objekat stavke 
+ */
     public void setStavkaId(StavkaRezervacije stavkaId) {
         this.stavkaId = stavkaId;
     }
-
+/**
+ * Metoda za hash code koji inicijalno ima vrednost 3
+ * zatim se setuje za atribute karte kao sto su id rezervacija i stavka
+ * @return hash odnosno vrednost hash koda
+ */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -69,7 +121,15 @@ public class Karta implements GenericEntity {
         hash = 83 * hash + Objects.hashCode(this.stavkaId);
         return hash;
     }
-
+/**
+ * Metoda za proveru da li je prosledjeni objekat jednak postojecoj karti
+ * proveravada li je objekat null ako jeste vraca false
+ * proverava da li su iste klase ako nisu vraca false
+ * ako im id, rezervacija ili stavka nisu iste vraca false
+ * u suprotnom vraca true
+ * @param obj koji treba da se proveri da li je isti kao postojeci
+ * @return false ako nisu isti ili true ako su isti
+ */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -93,7 +153,11 @@ public class Karta implements GenericEntity {
         }
         return Objects.equals(this.stavkaId, other.stavkaId);
     }
-
+/**
+ * Metoda za vracanja u string formatu vrednosti atributa objekta karte, svi atributi su ukljuceni
+ * id,cena,rzervacija,stavka
+ * @return string u kom su svi atributi kaarte
+ */
     @Override
     public String toString() {
         return "Karta{" + "kartaId=" + kartaId + ", cena=" + cena + ", rezervacijaId=" + rezervacijaId + ", stavkaId=" + stavkaId + '}';

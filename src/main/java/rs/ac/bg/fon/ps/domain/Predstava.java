@@ -14,14 +14,41 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-
+/**
+ * Klasa Predstava koja implementira interfejs Genericki entitet i njegove metode
+ * Predstavlja predstavu za koju se moze praviti rezervacija i za koju se moze kupiti karta ili napraviti plan gledanja
+ * svaka predstava mora da ima naziv,mesto na kom se desava,vreme kada se desava,kapacitet mesta koji moze da primi
+ * @author andelalausevic
+ */
 public class Predstava implements GenericEntity{
+    /**
+     * Predstavlja jedinstveni identifikator predstave
+     */
     private Integer predstavaId;
+    /**
+     * Predstaclja naziv predstave
+     */
     private String naziv;
+      /**
+     * Predstaclja naziv mesta gde se odrzava predstava
+     */
     private String mesto;
+    /**
+     * Predstavlja vreme u kom se desava predstava moze biti samo buduce vreme i u obliku datuma i vremena
+     */
     private LocalDateTime vreme;
+    /**
+     * Predstavlja kapacitet tj broj ljudi koji moze da bude na predstavi
+     */
     private Integer kapacitet;
-
+   /**
+     * Parametrizovan konstruktor koji setuje vrednosti za id, naziv, mesto,vreme i kapacitet
+     * @param predstavaId je id predstave 
+     * @param naziv  je naziv predstave koja se pravi
+     * @param mesto predstavlja nazziv mesta gde se odrzava predstava
+     * @param vreme predstavlja vreme predstave kada i ukoliko stai
+     * @param kapacitet predstavlja broj ljudi koji moze maksimalno da se primi na predstavu
+     */
     public Predstava(Integer predstavaId, String naziv, String mesto, LocalDateTime vreme, Integer kapacitet) {
         this.predstavaId = predstavaId;
         this.naziv = naziv;
@@ -29,50 +56,86 @@ public class Predstava implements GenericEntity{
         this.vreme = vreme;
         this.kapacitet = kapacitet;
     }
-
+    /**
+     * Neparametrizovan konstruktor klase Predstava
+     */
     public Predstava() {
     }
-
+/**
+ * Metoda koja vraca id predstave
+ * @return predstavaId u integer formatu
+ */
     public Integer getPredstavaId() {
         return predstavaId;
     }
-
+/**
+ * Metoda koja vraca naziv predstave
+ * @return naziv u string formatu
+ */
     public String getNaziv() {
         return naziv;
     }
-
+/**
+ * Metoda koja vraca naziv mesta predstave
+ * @return mesto u string formatu
+ */
     public String getMesto() {
         return mesto;
     }
-
+/**
+ * Metoda koja vraca naziv vreme predstave
+ * @return vreme u LocalFateTime formatu
+ */
     public LocalDateTime getVreme() {
         return vreme;
     }
-
+/**
+ * Metoda koja vraca kapacitet mesta predstave
+ * @return kapacitet u integer formatu
+ */
     public Integer getKapacitet() {
         return kapacitet;
     }
-
+/**
+ * Metoda koja postavlja id predstave na prosledjeni parametar
+ * @param predstavaId koja se setuje za predstava id
+ */
     public void setPredstavaId(Integer predstavaId) {
         this.predstavaId = predstavaId;
     }
-
+/**
+ * Metoda koja postavlja naziv predstave na prosledjeni parametar
+ * @param naziv koja se setuje za predstavin naziv
+ */
     public void setNaziv(String naziv) {
         this.naziv = naziv;
     }
-
+/**
+ * Metoda koja postavlja naziv mesta predstave na prosledjeni parametar
+ * @param mesto koja se setuje za predstavin naziv mesta
+ */
     public void setMesto(String mesto) {
         this.mesto = mesto;
     }
-
+/**
+ * Metoda koja postavlja vreme predstave na prosledjeni parametar
+ * @param vreme koja se setuje za datum i vreme predstave
+ */
     public void setVreme(LocalDateTime vreme) {
         this.vreme = vreme;
     }
-
+/**
+ * Metoda koja postavlja kapacitet predstave na prosledjeni parametar
+ * @param kapacitet koja se setuje za predstavin kapacitet mesta
+ */
     public void setKapacitet(Integer kapacitet) {
         this.kapacitet = kapacitet;
     }
-
+/**
+ * Metoda za hash code koji inicijalno ima vrednost 3
+ * zatim se setuje za atribute predstave kao sto su id naziv,mesto,vreme
+ * @return hash odnosno vrednost hash koda
+ */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -82,7 +145,15 @@ public class Predstava implements GenericEntity{
         hash = 83 * hash + Objects.hashCode(this.vreme);
         return hash;
     }
-
+/**
+ * Metoda za proveru da li je prosledjeni objekat jednak postojecoj predstavi
+ * proverava da li je objekat null ako jeste vraca false
+ * proverava da li su iste klase ako nisu vraca false
+ * ako im id, naziv,mesto ili vreme nisu iste vraca false
+ * u suprotnom vraca true
+ * @param obj koji treba da se proveri da li je isti kao postojeci
+ * @return false ako nisu isti ili true ako su isti
+ */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -106,7 +177,11 @@ public class Predstava implements GenericEntity{
         }
         return Objects.equals(this.vreme, other.vreme);
     }
-
+/**
+ * Metoda za vracanja u string formatu vrednosti atributa objekta predstave, svi atributi su ukljuceni
+ * id,naziv,mesto,vreme
+ * @return string u kom su svi atributi predstave
+ */
     @Override
     public String toString() {
         return "Predstava{" + "predstavaId=" + predstavaId + ", naziv=" + naziv + ", mesto=" + mesto + ", vreme=" + vreme + ", kapacitet=" + kapacitet + '}';

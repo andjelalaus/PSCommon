@@ -12,16 +12,29 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author Cartman
+ *Klasa Receiver koja funkcionise kao prihvatac
+ * prima preko soketa objekte
+ * @author Andjy
  */
 public class Receiver {
+    /**
+     * instanca klase Socket koja se definise za komunikaciju izmedju servera i klijenta
+     */
     private Socket socket;
 
+    /**
+     * Konstruktor klase Receiver
+     * postavlja vrednost socket-a na prosledjenu vrednost
+     * @param socket koji se postavlja za vrednost socket-a
+     */
     public Receiver(Socket socket) {
         this.socket = socket;
     }
-    
+    /**
+     * Metoda koja prihvata objekat putem ObjectInputStream i soketa
+     * @return vraca procitani objekat koji je poslat preko soketa
+     * @throws Exception ukoliko nije uspela da primi objekat
+     */
     public Object receive() throws Exception{
         try {
             ObjectInputStream in=new ObjectInputStream(socket.getInputStream());

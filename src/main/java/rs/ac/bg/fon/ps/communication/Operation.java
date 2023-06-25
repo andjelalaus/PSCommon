@@ -8,20 +8,109 @@ package rs.ac.bg.fon.ps.communication;
 import java.io.Serializable;
 
 /**
- *
- * @author Cartman
+ * Definisanja enum vrednosti koju mogu imati operacije koje klijent zeli da izvrsi
+ * Implementira interfejs Seriazable
+ * 
+ * @author Andjy
  */
 public enum Operation  implements Serializable{
     
-    //validacija na strani servera i moze kod klijenta
     
     
+    /**
+     * operacija logovanja
+     */
     LOGIN,
+    /**
+     * operacija vracanja svih manufactures koja se ne koristi
+     */
     GET_ALL_MANUFACTURERS,
+    /**
+     * operacija vracanja svih predstavi iz baze
+     */
     GET_ALL_PREDSTAVE,
+    /**
+     * operacija brisanja stavki rezervacija iz baze
+     */
     DELETE_STAVKA,
+    /**
+     * operacija dodavanja novog klijenta
+     */
     ADD_KLIJENT,
+    /**
+     * operacija auzuriranja proizvoda
+     */
     EDIT_PRODUCT,
+    /**
+     * operacija za brisanje predstave
+     */
     DELETE_PREDSTAVA,
-    ADD_INVOICE, ADD_PREDSTAVA, ADD_REZERVACIJA, GET_ALL_CLIENTS, ADD_KARTA, GET_ALL_SHOWS, GET_ALL_RESERVATIONS, GET_ALL_ITEMS_RESERVATIONS, UPDATE_REZERVACIJA, DELETE_REZERVACIJA, GET_ALL_TICKETS, DELETE_KARTA, ADD_PLAN, ADD_STAVKA, UPDATE_STAVKA, GET_ALL_PLAN, DELETE_PLAN,
+    /**
+     * operacija za dodavanje racuna
+     */
+    ADD_INVOICE, 
+    /**
+     * operacija za dodavanje nove predstave
+     */
+    ADD_PREDSTAVA, 
+    /**
+     * operacija za dodavanje nove rezervacije
+     */
+    ADD_REZERVACIJA, 
+    /**
+     * operacija za vracanje svih postojecih klijenata
+     */
+    GET_ALL_CLIENTS, 
+    /**
+     * operacija za dodavanje nove karte
+     */
+    ADD_KARTA, 
+    /**
+     * operacija za vracanje svih predstavi
+     */
+    GET_ALL_SHOWS, 
+    /**
+     * operacija za vracanje svih rezervacija
+     */
+    GET_ALL_RESERVATIONS, 
+    /**
+     * operacija za vracanje svih stavki rezervacije
+     */
+    GET_ALL_ITEMS_RESERVATIONS, 
+    /**
+     * operacija za auzuriranja vrednosti rezervacije
+     */
+    UPDATE_REZERVACIJA,
+    /**
+     * operacija za brisanje predstave
+     */
+    DELETE_REZERVACIJA, 
+    /**
+     * operacija za vracanje svih karti
+     */
+    GET_ALL_TICKETS, 
+    /**
+     * operacija za brisanje karte
+     */
+    DELETE_KARTA, 
+    /**
+     * operacija za dodavanje plana gledanja
+     */
+    ADD_PLAN, 
+    /**
+     * operacija za dodavanje nove stavke rezervacije
+     */
+    ADD_STAVKA, 
+    /**
+     * operacija za auzuriranje stavki rezervacija
+     */
+    UPDATE_STAVKA, 
+    /**
+     * operacija za vracanje planova gledanja
+     */
+    GET_ALL_PLAN, 
+    /**
+     * operacija za brisanje plana gledanja
+     */
+    DELETE_PLAN,
 }
