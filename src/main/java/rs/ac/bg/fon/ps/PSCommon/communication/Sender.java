@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rs.ac.bg.fon.ps.communication;
+package rs.ac.bg.fon.ps.PSCommon.communication;
 
 import java.io.BufferedOutputStream;
 import java.io.ObjectInputStream;

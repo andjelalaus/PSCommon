@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package rs.ac.bg.fon.ps.domain;
+package rs.ac.bg.fon.ps.PSCommon.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -132,10 +132,10 @@ public class StavkaRezervacije implements GenericEntity{
 /**
  * Metoda koja postavlja broj sedista na prosledjeni parametar za predstavu koju gleda klijent 
  * @param brojSedista koja se setuje za broj rezervisanih sedista predstave u stavki
- *  @throws IllegalArgumentException ako je brojSedista manji od 0 
+ *  @throws IllegalArgumentException ako je brojSedista manji od 1
  */
     public void setBrojSedista(int brojSedista) {
-         if(brojSedista<0){
+         if(brojSedista<1){
             throw new IllegalArgumentException("broj sedista ne moze biti manji od 0");
         }
         this.brojSedista = brojSedista;

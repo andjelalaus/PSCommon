@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rs.ac.bg.fon.ps.domain;
+package rs.ac.bg.fon.ps.PSCommon.domain;
 
 import java.io.Serializable;
 import java.sql.ResultSet;
