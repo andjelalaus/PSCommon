@@ -4,8 +4,7 @@
  */
 package rs.ac.bg.fon.ps.PSCommon.domain;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;

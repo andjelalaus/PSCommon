@@ -5,11 +5,10 @@
  */
 package rs.ac.bg.fon.ps.PSCommon.communication;
 
-import java.io.IOException;
+
 import java.io.ObjectInputStream;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *Klasa Receiver koja funkcionise kao prihvatac

@@ -4,14 +4,11 @@
  */
 package rs.ac.bg.fon.ps.PSCommon.domain;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
+
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 /**
