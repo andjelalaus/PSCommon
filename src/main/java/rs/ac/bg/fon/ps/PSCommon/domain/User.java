@@ -59,12 +59,14 @@ public class User implements Serializable{
  * @throws NullPointerException ako je username null
  */
     public void setUsername(String username) {
-        if(username.isEmpty()){
-            throw new IllegalArgumentException("ne moze da bude prazan username");
-        }
         if(username==null){
             throw new NullPointerException("ne moze da bude null username");
         }
+        
+        if(username.isEmpty()){
+            throw new IllegalArgumentException("ne moze da bude prazan username");
+        }
+        
         this.username = username;
     }
 
@@ -75,12 +77,13 @@ public class User implements Serializable{
  * @throws NullPointerException ako je password null
  */
     public void setPassword(String password) {
-           if(password.isEmpty()){
-            throw new IllegalArgumentException("ne moze da bude prazan password");
-        }
         if(password==null){
             throw new NullPointerException("ne moze da bude null password");
         }
+        if(password.isEmpty()){
+            throw new IllegalArgumentException("ne moze da bude prazan password");
+        }
+       
         this.password = password;
     }
 /**
