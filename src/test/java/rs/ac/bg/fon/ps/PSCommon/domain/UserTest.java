@@ -5,9 +5,7 @@
 package rs.ac.bg.fon.ps.PSCommon.domain;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
@@ -96,8 +94,9 @@ public class UserTest {
     
 		u.setUsername(ime);
                 u.setPassword(pass);
-		User u2=new User(ime2, pass2);
-		
+		User u2=new User();
+		u2.setUsername(ime2);
+                u2.setPassword(pass2);
 		assertEquals(isti, u.equals(u2));
     }	
 }

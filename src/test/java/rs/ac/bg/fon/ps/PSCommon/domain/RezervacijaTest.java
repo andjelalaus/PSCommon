@@ -4,13 +4,9 @@
  */
 package rs.ac.bg.fon.ps.PSCommon.domain;
 
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.util.ArrayList;
+
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
