@@ -73,7 +73,7 @@ public class StavkaRezervacijeTest {
     }
       @Test
     public void testSetPredstavaNULL(){
-       NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+       assertThrows(NullPointerException.class, () -> {
             st.setPredstavaId(null);
         });
     }

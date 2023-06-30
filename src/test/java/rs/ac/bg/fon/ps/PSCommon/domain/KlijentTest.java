@@ -41,7 +41,7 @@ public class KlijentTest {
     
     @Test
     public void testSetKlijentIdManjeOd0(){
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             klijent.setKlijentId(-1);
         });
     }
@@ -49,14 +49,14 @@ public class KlijentTest {
     @Test
     public void testSetImeNull() {
         // Testiranje kada je ime null
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             klijent.setIme(null);
         });
     }
     
     @Test
     public void testSetImePrazanString(){
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->{
+        assertThrows(IllegalArgumentException.class, ()->{
             klijent.setIme("");
         });
     }
@@ -69,14 +69,14 @@ public class KlijentTest {
         @Test
     public void testSetPrezimeNULL() {
         // Testiranje kada je ime null
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             klijent.setPrezime(null);
         });
     }
     
     @Test
     public void testSetPrezimePrazanString(){
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->{
+       assertThrows(IllegalArgumentException.class, ()->{
             klijent.setPrezime("");
         });
     }
@@ -89,14 +89,14 @@ public class KlijentTest {
             @Test
     public void testSetMejlNULL() {
         // Testiranje kada je ime null
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             klijent.setEmail(null);
         });
     }
     
     @Test
     public void testSetMejlPrazanString(){
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->{
+        assertThrows(IllegalArgumentException.class, ()->{
             klijent.setEmail("");
         });
     }
@@ -109,14 +109,14 @@ public class KlijentTest {
                 @Test
     public void testSetStatusNULL() {
         // Testiranje kada je ime null
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             klijent.setStatus(null);
         });
     }
     
     @Test
     public void testSetStatusPrazanString(){
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->{
+         assertThrows(IllegalArgumentException.class, ()->{
             klijent.setStatus("");
         });
     }

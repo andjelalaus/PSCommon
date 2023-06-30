@@ -60,7 +60,7 @@ public class RezervacijaTest {
     
     @Test
     public void testSetKlijentNULL(){
-       NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+       assertThrows(NullPointerException.class, () -> {
             r.setKlijentId(null);
         });
     }

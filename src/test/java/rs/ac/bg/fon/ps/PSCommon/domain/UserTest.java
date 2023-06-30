@@ -33,14 +33,14 @@ public class UserTest {
      @Test
     public void testSetImeNull() {
         // Testiranje kada je ime null
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             u.setUsername(null);
         });
     }
     
     @Test
     public void testSetImePrazanString(){
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->{
+        assertThrows(IllegalArgumentException.class, ()->{
             u.setUsername("");
         });
     }
@@ -53,14 +53,14 @@ public class UserTest {
          @Test
     public void testSetPassNull() {
         // Testiranje kada je ime null
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+       assertThrows(NullPointerException.class, () -> {
             u.setPassword(null);
         });
     }
     
     @Test
     public void testSetPassPrazanString(){
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->{
+       assertThrows(IllegalArgumentException.class, ()->{
             u.setPassword("");
         });
     }

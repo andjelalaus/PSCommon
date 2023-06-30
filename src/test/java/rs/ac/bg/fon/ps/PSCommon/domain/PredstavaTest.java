@@ -56,14 +56,14 @@ public class PredstavaTest {
      @Test
     public void testSetImeNull() {
         // Testiranje kada je ime null
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             p.setNaziv(null);
         });
     }
     
     @Test
     public void testSetImePrazanString(){
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->{
+       assertThrows(IllegalArgumentException.class, ()->{
             p.setNaziv("");
         });
     }
@@ -76,14 +76,14 @@ public class PredstavaTest {
          @Test
     public void testSetMestoNull() {
         // Testiranje kada je ime null
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+       assertThrows(NullPointerException.class, () -> {
             p.setMesto(null);
         });
     }
     
     @Test
     public void testSetMestoPrazanString(){
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->{
+       assertThrows(IllegalArgumentException.class, ()->{
             p.setMesto("");
         });
     }
@@ -103,7 +103,7 @@ public class PredstavaTest {
          @Test
     public void testSetVremeNull() {
         // Testiranje kada je ime null
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+      assertThrows(NullPointerException.class, () -> {
             p.setVreme(null);
         });
     }

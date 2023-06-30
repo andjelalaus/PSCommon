@@ -41,7 +41,7 @@ public class PlanGledanjaTest {
     
     @Test
     public void testSetKlijentNULL(){
-       NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+       assertThrows(NullPointerException.class, () -> {
             pl.setKlijentId(null);
         });
     }
@@ -54,7 +54,7 @@ public class PlanGledanjaTest {
     }
       @Test
     public void testSetPredstavaNULL(){
-       NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+       assertThrows(NullPointerException.class, () -> {
             pl.setPredstavaId(null);
         });
     }
@@ -96,10 +96,10 @@ public class PlanGledanjaTest {
                 assertTrue( str.contains("true") );
                 assertTrue( str.contains("1") );
                 assertTrue( str.contains("9") );
-                 assertTrue( str.contains("2") );
-                 assertTrue( str.contains("2023") );
-                 assertTrue( str.contains("20") );
-                 assertTrue( str.contains("11") );
+                assertTrue( str.contains("2") );
+                assertTrue( str.contains("2023") );
+                assertTrue( str.contains("20") );
+                assertTrue( str.contains("11") );
                 assertTrue( str.contains("10") );
                 assertTrue( str.contains("0") );
 	}
@@ -111,9 +111,9 @@ public class PlanGledanjaTest {
                 "2,1,true,false,false",
 	})
     void testEqualsOcena_Gledao(int ocena,int ocena2,boolean gl,boolean gl2, boolean isti) {
-         LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
-        Predstava p=new Predstava(1, "Tataratira", "Here",ld,100);
-              Klijent k=new Klijent(2,"Pera", "Peric", "aa@aa.g", "student");
+                LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
+                Predstava p=new Predstava(1, "Tataratira", "Here",ld,100);
+                Klijent k=new Klijent(2,"Pera", "Peric", "aa@aa.g", "student");
 		pl.setPredstavaId(p);
                 pl.setKlijentId(k);
                 pl.setOcena(ocena);
@@ -145,25 +145,29 @@ public class PlanGledanjaTest {
     
     @Test
     public void testEquals_DifferentPredstava() {
-        LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
-        Predstava p=new Predstava(1, "Tataratira", "Here",ld,100);
-         LocalDateTime ld2=LocalDateTime.of(2023, Month.SEPTEMBER, 20, 10, 0);
-        Predstava p2=new Predstava(2, "Tataratira", "Here",ld2,100);
+          LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
+          Predstava p=new Predstava(1, "Tataratira", "Here",ld,100);
+          LocalDateTime ld2=LocalDateTime.of(2023, Month.SEPTEMBER, 20, 10, 0);
+          Predstava p2=new Predstava(2, "Tataratira", "Here",ld2,100);
           Klijent k=new Klijent(2,"Pera", "Peric", "aa@aa.g", "student");
           pl.setOcena(10);
           pl.setKlijentId(k);
           pl.setPredstavaId(p);
           pl.setGledao(true);
-       PlanGledanja pl2=new PlanGledanja(p2, k, Boolean.TRUE,10);
+          PlanGledanja pl2=new PlanGledanja();
+          pl2.setPredstavaId(p2);
+          pl2.setKlijentId(k);
+          pl2.setOcena(10);
+          pl2.setGledao(true);
                
-        boolean result = pl.equals(pl2);
-        assertFalse(result);
+          boolean result = pl.equals(pl2);
+          assertFalse(result);
     }
 
     @Test
     public void testEquals_DifferentKlijent_ReturnsFalse() {
-        LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
-        Predstava p=new Predstava(1, "Tataratira", "Here",ld,100);
+         LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
+         Predstava p=new Predstava(1, "Tataratira", "Here",ld,100);
        
           Klijent k=new Klijent(2,"Pera", "Peric", "aa@aa.g", "student");
           Klijent k2=new Klijent(3,"lule", "Lulic", "ll@aa.g", "student");
@@ -171,10 +175,13 @@ public class PlanGledanjaTest {
           pl.setKlijentId(k);
           pl.setPredstavaId(p);
           pl.setGledao(true);
-       PlanGledanja pl2=new PlanGledanja(p, k2, Boolean.TRUE,10);
-               
-        boolean result = pl.equals(pl2);
-        assertFalse(result);
+          PlanGledanja pl2=new PlanGledanja();
+          pl2.setPredstavaId(p);
+          pl2.setKlijentId(k2);
+          pl2.setOcena(10);
+          pl2.setGledao(true);
+          boolean result = pl.equals(pl2);
+          assertFalse(result);
     }
 
     
