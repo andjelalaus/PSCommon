@@ -31,13 +31,6 @@ public class UserTest {
     }
 
     @Test
-    public void testSetImePrazanString(){
-        assertThrows(IllegalArgumentException.class, ()->{
-            u.setUsername("");
-        });
-    }
-    
-     @Test
     public void testSetImeNull() {
         // Testiranje kada je ime null
         assertThrows(NullPointerException.class, () -> {
@@ -46,9 +39,24 @@ public class UserTest {
     }
     
     @Test
+    public void testSetImePrazanString(){
+        assertThrows(IllegalArgumentException.class, ()->{
+            u.setUsername("");
+        });
+    }
+    
+    
+    @Test
     public void testSetImeOK(){
         u.setUsername("alaus");
         assertEquals("alaus",u.getUsername());
+    }
+   
+         @Test
+    public void testSetPassNull() {
+       assertThrows(NullPointerException.class, () -> {
+            u.setPassword(null);
+        });
     }
      @Test
     public void testSetPassPrazanString(){
@@ -56,15 +64,7 @@ public class UserTest {
             u.setPassword("");
         });
     }
-         @Test
-    public void testSetPassNull() {
-       assertThrows(NullPointerException.class, () -> {
-            u.setPassword(null);
-        });
-    }
-    
    
-    
     @Test
     public void testSetPassOK(){
         u.setPassword("alaus");

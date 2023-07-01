@@ -136,7 +136,7 @@ public class KartaTest {
                     p.setNaziv("Esmeralda");
                     p.setKapacitet(190);
                     LocalDateTime ld=LocalDateTime.of(2023, Month.AUGUST, 9, 20, 0);
-                    p.setVreme(LocalDateTime.MIN);
+                    p.setVreme(ld);
 
                     StavkaRezervacije st=new StavkaRezervacije();
                     st.setBrojSedista(7);
@@ -154,6 +154,7 @@ public class KartaTest {
                     String str = k.toString();
 
                     assertTrue( str.contains("190") );
+                    assertTrue( str.contains("200") );
                     assertTrue( str.contains("Nadja") );
                     assertTrue( str.contains("Jezdimirovic") );
                     assertTrue( str.contains("nadja@jezd.com") );
@@ -169,8 +170,8 @@ public class KartaTest {
                     assertTrue( str.contains("5") );
                     assertTrue( str.contains("6") );
                     assertTrue( str.contains("7") );
-                    assertTrue( str.contains("2023") );
                     assertTrue( str.contains("9") );
+                    assertTrue( str.contains("2023") );
                     assertTrue( str.contains("20") );
                     assertTrue( str.contains("8") );
                     assertTrue( str.contains("0") );
