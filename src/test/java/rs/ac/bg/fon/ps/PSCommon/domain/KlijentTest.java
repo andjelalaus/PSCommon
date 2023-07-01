@@ -34,7 +34,6 @@ public class KlijentTest {
 
     @Test
     public void testSetKlijentIdOK() {
-        // Testiranje kada je klijentId veći od 0
         klijent.setKlijentId(5);
         assertEquals(5, klijent.getKlijentId());
     }
@@ -48,7 +47,6 @@ public class KlijentTest {
 
     @Test
     public void testSetImeNull() {
-        // Testiranje kada je ime null
         assertThrows(NullPointerException.class, () -> {
             klijent.setIme(null);
         });
@@ -68,7 +66,6 @@ public class KlijentTest {
     }
         @Test
     public void testSetPrezimeNULL() {
-        // Testiranje kada je ime null
         assertThrows(NullPointerException.class, () -> {
             klijent.setPrezime(null);
         });
@@ -88,7 +85,6 @@ public class KlijentTest {
     }
             @Test
     public void testSetMejlNULL() {
-        // Testiranje kada je ime null
         assertThrows(NullPointerException.class, () -> {
             klijent.setEmail(null);
         });
@@ -108,7 +104,6 @@ public class KlijentTest {
     }
                 @Test
     public void testSetStatusNULL() {
-        // Testiranje kada je ime null
         assertThrows(NullPointerException.class, () -> {
             klijent.setStatus(null);
         });

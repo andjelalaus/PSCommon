@@ -55,7 +55,6 @@ public class PredstavaTest {
     }
      @Test
     public void testSetImeNull() {
-        // Testiranje kada je ime null
         assertThrows(NullPointerException.class, () -> {
             p.setNaziv(null);
         });
@@ -124,10 +123,10 @@ public class PredstavaTest {
                 assertTrue( str.contains("Here") );
                 assertTrue( str.contains("1") );
                 assertTrue( str.contains("10") );
-                 assertTrue( str.contains("20") );
-                 assertTrue( str.contains("3") );
-                 assertTrue( str.contains("2023") );
-                 assertTrue( str.contains("0") );
+                assertTrue( str.contains("20") );
+                assertTrue( str.contains("3") );
+                assertTrue( str.contains("2023") );
+                assertTrue( str.contains("0") );
 	}
     @ParameterizedTest
     @CsvSource ({
@@ -146,12 +145,14 @@ public class PredstavaTest {
                 p.setMesto(mesto);
                 p.setVreme(vreme);
                 p.setKapacitet(kapacitet);
+                
 		Predstava p2=new Predstava();
 		p2.setId(id2);
                 p2.setNaziv(naziv2);
                 p2.setMesto(mesto2);
                 p2.setVreme(vreme2);
                 p2.setKapacitet(kapacitet2);
+                
 		assertEquals(isti, p.equals(p2));
     }	
 }

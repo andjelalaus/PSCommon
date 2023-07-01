@@ -34,7 +34,13 @@ public class PlanGledanjaTest {
 
      @Test
     public void testSetKlijentOK() {
-        Klijent k=new Klijent(1,"andjela", "lausevic", "aa@gg.com", "redovan");
+        Klijent k=new Klijent();
+        k.setKlijentId(1);
+        k.setIme("Andja");
+        k.setEmail("aa@gg.com");
+        k.setPrezime("Laus");
+        k.setStatus("redovan");
+        
         pl.setKlijentId(k);
         assertEquals(k,pl.getKlijentId());
     }
@@ -48,7 +54,12 @@ public class PlanGledanjaTest {
     
      @Test
     public void testSetPredstavaOk() {
-        Predstava p=new Predstava(1, "Taratira", "Beograd", LocalDateTime.MIN,100);
+        Predstava p=new Predstava();
+        p.setNaziv("Napredno programiranje");
+        p.setMesto("Belgrade");
+        p.setVreme(LocalDateTime.MIN);
+        p.setKapacitet(100);
+        
         pl.setPredstavaId(p);
         assertEquals(p,pl.getPredstavaId());
     }
@@ -60,7 +71,7 @@ public class PlanGledanjaTest {
     }
     @Test
     void testSetOcenaOK() {
-            pl.setOcena(2);
+          pl.setOcena(2);
 		
 	  assertEquals(2,pl.getOcena());
     }
@@ -75,14 +86,27 @@ public class PlanGledanjaTest {
      @Test
     @DisplayName ("Test za proveru toString metode PlanGledanja")
     void testToString() {
-              pl.setOcena(9);
-              pl.setGledao(true);
-              LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
-              Predstava p=new Predstava(1, "Tataratira", "Here",ld,100);
-              Klijent k=new Klijent(2,"Pera", "Peric", "aa@aa.g", "student");
+             
+                LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
               
-		pl.setKlijentId(k);
+                Predstava p=new Predstava();
+                p.setId(1);
+                p.setKapacitet(100);
+                p.setNaziv("Tataratira");
+                p.setMesto("Here");
+                p.setVreme(ld);
+              
+                Klijent k=new Klijent();
+                k.setEmail("aa@aa.g");
+                k.setId(2);
+                k.setPrezime("Peric");
+                k.setIme("Pera");
+                k.setStatus("student");
+              
+                pl.setKlijentId(k);
                 pl.setPredstavaId(p);
+                pl.setOcena(9);
+                pl.setGledao(true);
                 
 		String str = pl.toString();
 
@@ -111,19 +135,33 @@ public class PlanGledanjaTest {
                 "2,1,true,false,false",
 	})
     void testEqualsOcena_Gledao(int ocena,int ocena2,boolean gl,boolean gl2, boolean isti) {
-                LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
-                Predstava p=new Predstava(1, "Tataratira", "Here",ld,100);
-                Klijent k=new Klijent(2,"Pera", "Peric", "aa@aa.g", "student");
-		pl.setPredstavaId(p);
-                pl.setKlijentId(k);
-                pl.setOcena(ocena);
-                pl.setGledao(gl);
-		PlanGledanja pl2=new PlanGledanja();
-		pl2.setPredstavaId(p);
-                pl2.setKlijentId(k);
-                pl2.setOcena(ocena2);
-                pl2.setGledao(gl2);
-		assertEquals(isti, pl.equals(pl2));
+              LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
+              Predstava p=new Predstava();
+              p.setId(1);
+              p.setKapacitet(100);
+              p.setNaziv("Tataratira");
+              p.setMesto("Here");
+              p.setVreme(ld);
+              
+              Klijent k=new Klijent();
+              k.setEmail("aa@aa.g");
+              k.setId(2);
+              k.setPrezime("Peric");
+              k.setIme("Pera");
+              k.setStatus("student");
+		
+              pl.setPredstavaId(p);
+              pl.setKlijentId(k);
+              pl.setOcena(ocena);
+              pl.setGledao(gl);
+                
+              PlanGledanja pl2=new PlanGledanja();
+	      pl2.setPredstavaId(p);
+              pl2.setKlijentId(k);
+              pl2.setOcena(ocena2);
+              pl2.setGledao(gl2);
+              
+              assertEquals(isti, pl.equals(pl2));
     }	
       @Test
     void testEqualsDruga_Klasa() {
@@ -145,43 +183,82 @@ public class PlanGledanjaTest {
     
     @Test
     public void testEquals_DifferentPredstava() {
-          LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
-          Predstava p=new Predstava(1, "Tataratira", "Here",ld,100);
-          LocalDateTime ld2=LocalDateTime.of(2023, Month.SEPTEMBER, 20, 10, 0);
-          Predstava p2=new Predstava(2, "Tataratira", "Here",ld2,100);
-          Klijent k=new Klijent(2,"Pera", "Peric", "aa@aa.g", "student");
-          pl.setOcena(10);
-          pl.setKlijentId(k);
-          pl.setPredstavaId(p);
-          pl.setGledao(true);
-          PlanGledanja pl2=new PlanGledanja();
-          pl2.setPredstavaId(p2);
-          pl2.setKlijentId(k);
-          pl2.setOcena(10);
-          pl2.setGledao(true);
-               
-          boolean result = pl.equals(pl2);
-          assertFalse(result);
+              LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
+          
+              Predstava p=new Predstava();
+              p.setId(1);
+              p.setKapacitet(100);
+              p.setNaziv("Tataratira");
+              p.setMesto("Here");
+              p.setVreme(ld);
+              
+              Klijent k=new Klijent();
+              k.setEmail("aa@aa.g");
+              k.setId(2);
+              k.setPrezime("Peric");
+              k.setIme("Pera");
+              k.setStatus("student");
+              
+              LocalDateTime ld2=LocalDateTime.of(2023, Month.SEPTEMBER, 20, 10, 0);
+              Predstava p2=new Predstava();
+              p2.setId(2);
+              p2.setKapacitet(100);
+              p2.setNaziv("Tataratira");
+              p2.setMesto("Here");
+              p2.setVreme(ld2);
+              
+              pl.setOcena(10);
+              pl.setKlijentId(k);
+              pl.setPredstavaId(p);
+              pl.setGledao(true);
+
+              PlanGledanja pl2=new PlanGledanja();
+              pl2.setPredstavaId(p2);
+              pl2.setKlijentId(k);
+              pl2.setOcena(10);
+              pl2.setGledao(true);
+
+              boolean result = pl.equals(pl2);
+              assertFalse(result);
     }
 
     @Test
     public void testEquals_DifferentKlijent_ReturnsFalse() {
-         LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
-         Predstava p=new Predstava(1, "Tataratira", "Here",ld,100);
-       
-          Klijent k=new Klijent(2,"Pera", "Peric", "aa@aa.g", "student");
-          Klijent k2=new Klijent(3,"lule", "Lulic", "ll@aa.g", "student");
-          pl.setOcena(10);
-          pl.setKlijentId(k);
-          pl.setPredstavaId(p);
-          pl.setGledao(true);
-          PlanGledanja pl2=new PlanGledanja();
-          pl2.setPredstavaId(p);
-          pl2.setKlijentId(k2);
-          pl2.setOcena(10);
-          pl2.setGledao(true);
-          boolean result = pl.equals(pl2);
-          assertFalse(result);
+              LocalDateTime ld=LocalDateTime.of(2023, Month.NOVEMBER, 20, 10, 0);
+              Predstava p=new Predstava();
+              p.setId(1);
+              p.setKapacitet(100);
+              p.setNaziv("Tataratira");
+              p.setMesto("Here");
+              p.setVreme(ld);
+              
+              Klijent k=new Klijent();
+              k.setEmail("aa@aa.g");
+              k.setId(2);
+              k.setPrezime("Peric");
+              k.setIme("Pera");
+              k.setStatus("student");
+          
+              Klijent k2=new Klijent();
+              k2.setEmail("mare@car.com");
+              k2.setId(3);
+              k2.setPrezime("Marko");
+              k2.setIme("Maric");
+              k2.setStatus("nezaposlen");
+              
+              pl.setOcena(10);
+              pl.setKlijentId(k);
+              pl.setPredstavaId(p);
+              pl.setGledao(true);
+                
+              PlanGledanja pl2=new PlanGledanja();
+              pl2.setPredstavaId(p);
+              pl2.setKlijentId(k2);
+              pl2.setOcena(10);
+              pl2.setGledao(true);
+                
+              boolean result = pl.equals(pl2);
+              assertFalse(result);
     }
 
     

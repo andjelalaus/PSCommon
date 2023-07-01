@@ -5,6 +5,7 @@
 package rs.ac.bg.fon.ps.PSCommon.domain;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -53,7 +54,18 @@ public class KartaTest {
     }
     @Test
     void testSetRezervacijaOK() {
-        Rezervacija r=new Rezervacija(1,2, new Klijent(1, "Pera", "Peric", "aa@aa.g", "student"));
+        Klijent klij=new Klijent();
+        klij.setKlijentId(1);
+        klij.setIme("Nadja");
+        klij.setEmail("nadja@jezd.com");
+        klij.setPrezime("Jezdimirovic");
+        klij.setStatus("nezaposlena");
+        
+        Rezervacija r=new Rezervacija();
+        r.setRezervacijaId(1);
+        r.setKlijentId(klij);
+        r.setBrojPredstave(1);
+        
         k.setRezervacijaId(r);
 		
 	assertEquals(r,k.getRezervacijaId());
@@ -65,11 +77,37 @@ public class KartaTest {
     }
     @Test
     void testSetStavkaOK() {
-        Rezervacija r=new Rezervacija(1,2, new Klijent(1, "Pera", "Peric", "aa@aa.g", "student"));
-       StavkaRezervacije s=new StavkaRezervacije(1, 10, 1, true, r, new Predstava(2, "Tataratira", "Here", LocalDateTime.MIN,3));
-       k.setStavkaId(s);
+        
+        Klijent klij=new Klijent();
+        klij.setKlijentId(1);
+        klij.setIme("Nadja");
+        klij.setEmail("nadja@jezd.com");
+        klij.setPrezime("Jezdimirovic");
+        klij.setStatus("nezaposlena");
+        
+        Rezervacija r=new Rezervacija();
+        r.setRezervacijaId(1);
+        r.setKlijentId(klij);
+        r.setBrojPredstave(1);
+        
+        Predstava p=new Predstava();
+        p.setPredstavaId(1);
+        p.setMesto("Velika scena");
+        p.setNaziv("Bajadera");
+        p.setKapacitet(190);
+        p.setVreme(LocalDateTime.MIN);
+        
+        StavkaRezervacije st=new StavkaRezervacije();
+        st.setBrojSedista(10);
+        st.setRezervacijaId(r);
+        st.setPredstavaId(p);
+        st.setGledato(true);
+        st.setPopust(10);
+        st.setStavkaId(1);
+        
+        k.setStavkaId(st);
 		
-	assertEquals(s,k.getStavkaId());
+	assertEquals(st,k.getStavkaId());
     }
     @Test
     void testSetStavkaNULL() {
@@ -79,31 +117,63 @@ public class KartaTest {
     @Test
     @DisplayName ("Test za proveru toString metode Karte")
     void testToString() {
-                k.setCena(200);
-                k.setKartaId(2);
-		
-		Rezervacija r=new Rezervacija(1,2, new Klijent(4, "Pera", "Peric", "aa@aa.g", "student"));
-                StavkaRezervacije s=new StavkaRezervacije(3, 10, 5, true, r, new Predstava(6, "Tataratira", "Here", LocalDateTime.MIN,3));
-		k.setRezervacijaId(r);
-                k.setStavkaId(s);
-                
-		String str = k.toString();
+        
+		    Klijent klij=new Klijent();
+                    klij.setKlijentId(1);
+                    klij.setIme("Nadja");
+                    klij.setEmail("nadja@jezd.com");
+                    klij.setPrezime("Jezdimirovic");
+                    klij.setStatus("nezaposlena");
 
-		assertTrue( str.contains("200") );
-		assertTrue( str.contains("Pera") );
-		assertTrue( str.contains("Peric") );
-		assertTrue( str.contains("aa@aa.g") );
-		assertTrue( str.contains("student") );
-		assertTrue( str.contains("Tataratira") );
-                assertTrue( str.contains("Here") );
-                assertTrue( str.contains("true") );
-                assertTrue( str.contains("1") );
-                assertTrue( str.contains("10") );
-                 assertTrue( str.contains("2") );
-                 assertTrue( str.contains("3") );
-                 assertTrue( str.contains("4") );
-                 assertTrue( str.contains("5") );
-                 assertTrue( str.contains("6") );
+                    Rezervacija r=new Rezervacija();
+                    r.setRezervacijaId(4);
+                    r.setKlijentId(klij);
+                    r.setBrojPredstave(3);
+
+                    Predstava p=new Predstava();
+                    p.setPredstavaId(2);
+                    p.setMesto("Velika scena");
+                    p.setNaziv("Esmeralda");
+                    p.setKapacitet(190);
+                    LocalDateTime ld=LocalDateTime.of(2023, Month.AUGUST, 9, 20, 0);
+                    p.setVreme(LocalDateTime.MIN);
+
+                    StavkaRezervacije st=new StavkaRezervacije();
+                    st.setBrojSedista(7);
+                    st.setRezervacijaId(r);
+                    st.setPredstavaId(p);
+                    st.setGledato(true);
+                    st.setPopust(10);
+                    st.setStavkaId(5);
+                    
+                    k.setCena(200);
+                    k.setKartaId(6);
+                    k.setRezervacijaId(r);
+                    k.setStavkaId(st);
+                
+                    String str = k.toString();
+
+                    assertTrue( str.contains("190") );
+                    assertTrue( str.contains("Nadja") );
+                    assertTrue( str.contains("Jezdimirovic") );
+                    assertTrue( str.contains("nadja@jezd.com") );
+                    assertTrue( str.contains("nezaposlena") );
+                    assertTrue( str.contains("Esmeralda") );
+                    assertTrue( str.contains("Velika scena") );
+                    assertTrue( str.contains("true") );
+                    assertTrue( str.contains("1") );
+                    assertTrue( str.contains("10") );
+                    assertTrue( str.contains("2") );
+                    assertTrue( str.contains("3") );
+                    assertTrue( str.contains("4") );
+                    assertTrue( str.contains("5") );
+                    assertTrue( str.contains("6") );
+                    assertTrue( str.contains("7") );
+                    assertTrue( str.contains("2023") );
+                    assertTrue( str.contains("9") );
+                    assertTrue( str.contains("20") );
+                    assertTrue( str.contains("8") );
+                    assertTrue( str.contains("0") );
 	}
     
     @ParameterizedTest
@@ -115,17 +185,45 @@ public class KartaTest {
 	})
     void testEqualsCena_ID(Integer id1,Integer id2,int cena,int cena2, boolean isti) {
     
-                Rezervacija r=new Rezervacija(1,2, new Klijent(4, "Pera", "Peric", "aa@aa.g", "student"));
-                StavkaRezervacije s=new StavkaRezervacije(3, 10, 5, true, r, new Predstava(6, "Tataratira", "Here", LocalDateTime.MIN,3));
-		k.setId(id1);
+                Klijent klij=new Klijent();
+                klij.setKlijentId(1);
+                klij.setIme("Nadja");
+                klij.setEmail("nadja@jezd.com");
+                klij.setPrezime("Jezdimirovic");
+                klij.setStatus("nezaposlena");
+
+                Rezervacija r=new Rezervacija();
+                r.setRezervacijaId(4);
+                r.setKlijentId(klij);
+                r.setBrojPredstave(3);
+
+                Predstava p=new Predstava();
+                p.setPredstavaId(2);
+                p.setMesto("Velika scena");
+                p.setNaziv("Esmeralda");
+                p.setKapacitet(190);
+                p.setVreme(LocalDateTime.MIN);
+		
+                StavkaRezervacije st=new StavkaRezervacije();
+                st.setBrojSedista(10);
+                st.setRezervacijaId(r);
+                st.setPredstavaId(p);
+                st.setGledato(true);
+                st.setPopust(10);
+                st.setStavkaId(1);
+                
+                k.setId(id1);
 		k.setCena(cena);
+                
 		Karta k2 = new Karta();
 		k2.setId(id2);
                 k2.setCena(cena2);
+                
 		k.setRezervacijaId(r);
                 k2.setRezervacijaId(r);
-                k.setStavkaId(s);
-                k2.setStavkaId(s);
+                k.setStavkaId(st);
+                k2.setStavkaId(st);
+                
 		assertEquals(isti, k.equals(k2));
     }	
     @Test
@@ -137,51 +235,121 @@ public class KartaTest {
     @Test
     public void testEquals_Isti() {
      
-       k=new Karta();
+       
         assertTrue(k.equals(k));
     }
 
     @Test
     public void testEquals_Null() {
         
-        k=new Karta();
+        
         assertFalse(k.equals(null));
     }
     
     @Test
     public void testEquals_DifferentRezervacijaId_ReturnsFalse() {
-        k=new Karta();
-        Rezervacija r=new Rezervacija(1,2, new Klijent(4, "Pera", "Peric", "aa@aa.g", "student"));
-        Rezervacija r2=new Rezervacija(2,2, new Klijent(3, "Mare", "Peric", "bb@aa.g", "student"));
-        k.setRezervacijaId(r);
-        k.setCena(0);
-        k.setId(0);
-        StavkaRezervacije s=new StavkaRezervacije(3, 10, 5, true, r, new Predstava(6, "Tataratira", "Here", LocalDateTime.MIN,3));
-        k.setStavkaId(s);
-        Karta karta2 = new Karta();
-        karta2.setRezervacijaId(r2);
-        karta2.setCena(0);
-        karta2.setId(0);
-        karta2.setStavkaId(s);
-        boolean result = k.equals(karta2);
-        assertFalse(result);
+        
+                Klijent klij=new Klijent();
+                klij.setKlijentId(1);
+                klij.setIme("Nadja");
+                klij.setEmail("nadja@jezd.com");
+                klij.setPrezime("Jezdimirovic");
+                klij.setStatus("nezaposlena");
+
+                Rezervacija r=new Rezervacija();
+                r.setRezervacijaId(4);
+                r.setKlijentId(klij);
+                r.setBrojPredstave(3);
+                
+                Rezervacija r2=new Rezervacija();
+                r2.setRezervacijaId(5);
+                r2.setKlijentId(klij);
+                r2.setBrojPredstave(2);
+
+                Predstava p=new Predstava();
+                p.setPredstavaId(2);
+                p.setMesto("Velika scena");
+                p.setNaziv("Esmeralda");
+                p.setKapacitet(190);
+                p.setVreme(LocalDateTime.MIN);
+		
+                StavkaRezervacije st=new StavkaRezervacije();
+                st.setBrojSedista(10);
+                st.setRezervacijaId(r);
+                st.setPredstavaId(p);
+                st.setGledato(true);
+                st.setPopust(10);
+                st.setStavkaId(1);             
+        
+                k.setRezervacijaId(r);
+                k.setCena(0);
+                k.setId(1);
+                k.setStavkaId(st);
+                
+                Karta karta2 = new Karta();
+                karta2.setRezervacijaId(r2);
+                karta2.setCena(0);
+                karta2.setId(1);
+                karta2.setStavkaId(st);
+                
+                boolean result = k.equals(karta2);
+                assertFalse(result);
     }
 
     @Test
     public void testEquals_DifferentStavkaId_ReturnsFalse() {
-        k=new Karta();
-        Rezervacija r=new Rezervacija(1,2, new Klijent(4, "Pera", "Peric", "aa@aa.g", "student"));
-        StavkaRezervacije s=new StavkaRezervacije(3, 10, 5, true, r, new Predstava(6, "Tataratira", "Here", LocalDateTime.MIN,3));
-        k.setStavkaId(s);
-        k.setRezervacijaId(r);
-        k.setId(1);
-        k.setCena(0);
-        Karta karta2 = new Karta();
-        StavkaRezervacije s2=new StavkaRezervacije(4, 1, 2, false, r, new Predstava(7, "Blabla", "Here", LocalDateTime.MIN,2));
-        karta2.setStavkaId(s2);
-        karta2.setRezervacijaId(r);
-        karta2.setId(1);
-        karta2.setCena(0);
+        
+                Klijent klij=new Klijent();
+                klij.setKlijentId(1);
+                klij.setIme("Nadja");
+                klij.setEmail("nadja@jezd.com");
+                klij.setPrezime("Jezdimirovic");
+                klij.setStatus("nezaposlena");
+
+                Rezervacija r=new Rezervacija();
+                r.setRezervacijaId(4);
+                r.setKlijentId(klij);
+                r.setBrojPredstave(3);
+                
+                Rezervacija r2=new Rezervacija();
+                r2.setRezervacijaId(5);
+                r2.setKlijentId(klij);
+                r2.setBrojPredstave(2);
+
+                Predstava p=new Predstava();
+                p.setPredstavaId(2);
+                p.setMesto("Velika scena");
+                p.setNaziv("Esmeralda");
+                p.setKapacitet(190);
+                p.setVreme(LocalDateTime.MIN);
+		
+                StavkaRezervacije st=new StavkaRezervacije();
+                st.setBrojSedista(10);
+                st.setRezervacijaId(r);
+                st.setPredstavaId(p);
+                st.setGledato(true);
+                st.setPopust(10);
+                st.setStavkaId(1);
+                
+                StavkaRezervacije st2=new StavkaRezervacije();
+                st2.setBrojSedista(1);
+                st2.setRezervacijaId(r2);
+                st2.setPredstavaId(p);
+                st2.setGledato(false);
+                st2.setPopust(5);
+                st2.setStavkaId(2);
+                
+                k.setStavkaId(st);
+                k.setRezervacijaId(r);
+                k.setId(1);
+                k.setCena(0);
+                
+                Karta karta2 = new Karta();
+                karta2.setStavkaId(st2);
+                karta2.setRezervacijaId(r);
+                karta2.setId(1);
+                karta2.setCena(0);
+                
         boolean result = k.equals(karta2);
         assertFalse(result);
     }

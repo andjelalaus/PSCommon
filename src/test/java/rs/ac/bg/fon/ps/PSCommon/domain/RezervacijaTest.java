@@ -53,7 +53,13 @@ public class RezervacijaTest {
     }
      @Test
     public void testSetKlijentOK() {
-        Klijent k=new Klijent(1,"andjela", "lausevic", "aa@gg.com", "redovan");
+        Klijent k=new Klijent();
+        k.setKlijentId(1);
+        k.setIme("Nikola");
+        k.setEmail("micko@gmail.com");
+        k.setPrezime("Micic");
+        k.setStatus("student");
+        
         r.setKlijentId(k);
         assertEquals(k,r.getKlijentId());
     }
@@ -67,24 +73,30 @@ public class RezervacijaTest {
     @Test
     @DisplayName ("Test za proveru toString metode Rezervacije")
     void testToString() {
+              
+              
+              Klijent k=new Klijent();
+              k.setEmail("aa@aa.g");
+              k.setIme("Pera");
+              k.setPrezime("Peric");
+              k.setStatus("student");
+              k.setKlijentId(2);
+              
+              r.setKlijentId(k);
               r.setBrojPredstave(100);
               r.setRezervacijaId(9);
               
-              Klijent k=new Klijent(2,"Pera", "Peric", "aa@aa.g", "student");
-              
-              r.setKlijentId(k);
-               
                 
-		String str = r.toString();
+	      String str = r.toString();
 
-		assertTrue( str.contains("100") );
-		assertTrue( str.contains("Pera") );
-		assertTrue( str.contains("Peric") );
-		assertTrue( str.contains("aa@aa.g") );
-		assertTrue( str.contains("student") );
+              assertTrue( str.contains("100") );
+	      assertTrue( str.contains("Pera") );
+	      assertTrue( str.contains("Peric") );
+	      assertTrue( str.contains("aa@aa.g") );
+	      assertTrue( str.contains("student") );
 		
-                assertTrue( str.contains("9") );
-                 assertTrue( str.contains("2") );
+              assertTrue( str.contains("9") );
+              assertTrue( str.contains("2") );
                 
 	}
      @ParameterizedTest
@@ -98,13 +110,21 @@ public class RezervacijaTest {
     
 		r.setRezervacijaId(id1);
 		r.setBrojPredstave(brP);
+                
 		Rezervacija r2=new Rezervacija();
 		r2.setRezervacijaId(id2);
                 r2.setBrojPredstave(brP2);
-                Klijent k=new Klijent(2,"Pera", "Peric", "aa@aa.g", "student");
+                
+                Klijent k=new Klijent();
+                k.setKlijentId(1);
+                k.setIme("Nikola");
+                k.setEmail("micko@gmail.com");
+                k.setPrezime("Micic");
+                k.setStatus("student");
               
                 r.setKlijentId(k);
                 r2.setKlijentId(k);
+                
 		assertEquals(isti, r.equals(r2));
     }	
     @Test
@@ -129,15 +149,31 @@ public class RezervacijaTest {
     
     @Test
     public void testEquals_DifferentKlijent() {
-        Klijent k=new Klijent(2,"Pera", "Peric", "aa@aa.g", "student");
-         Klijent k2=new Klijent(3,"Pera", "Veric", "aa@aa.g", "redovan");
-        r.setBrojPredstave(100);
-        r.setKlijentId(k);
-        r.setRezervacijaId(2);
+                Klijent k=new Klijent();
+                k.setKlijentId(1);
+                k.setIme("Nikola");
+                k.setEmail("micko@gmail.com");
+                k.setPrezime("Micic");
+                k.setStatus("student");
+                
+                Klijent k2=new Klijent();
+                k2.setKlijentId(2);
+                k2.setIme("Darko");
+                k2.setEmail("darko@gmail.com");
+                k2.setPrezime("Mandic");
+                k2.setStatus("student");
+                
+                r.setBrojPredstave(100);
+                r.setKlijentId(k);
+                r.setRezervacijaId(2);
         
-        Rezervacija r2=new Rezervacija(2,100,k2);
+                Rezervacija r2=new Rezervacija();
+                r2.setBrojPredstave(100);
+                r2.setKlijentId(k2);
+                r2.setRezervacijaId(2);
        
-        boolean result = r.equals(r2);
-        assertFalse(result);
+                
+                boolean result = r.equals(r2);
+                assertFalse(result);
     }
 }
